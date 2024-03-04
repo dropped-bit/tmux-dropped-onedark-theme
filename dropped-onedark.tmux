@@ -62,7 +62,7 @@ main() {
 
   # NOTE: Checking for the value of @catppuccin_window_tabs_enabled
   local wt_enabled
-  wt_enabled="$(get_tmux_option "@catppuccin_window_tabs_enabled" "off")"
+  wt_enabled="$(get_tmux_option "@catppuccin_window_tabs_enabled" "on")"
   readonly wt_enabled
 
   local right_separator
@@ -74,15 +74,15 @@ main() {
   readonly left_separator
 
   local user
-  user="$(get_tmux_option "@catppuccin_user" "off")"
+  user="$(get_tmux_option "@catppuccin_user" "on")"
   readonly user
 
   local host
-  host="$(get_tmux_option "@catppuccin_host" "off")"
+  host="$(get_tmux_option "@catppuccin_host" "on")"
   readonly host
 
   local date_time
-  date_time="$(get_tmux_option "@catppuccin_date_time" "off")"
+  date_time="$(get_tmux_option "@catppuccin_date_time" "on")"
   readonly date_time
 
   # These variables are the defaults so that the setw and set calls are easier to parse.
