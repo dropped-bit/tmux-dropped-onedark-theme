@@ -62,7 +62,7 @@ main() {
 
   # NOTE: Checking for the value of @catppuccin_window_tabs_enabled
   local wt_enabled
-  wt_enabled="$(get_tmux_option "@catppuccin_window_tabs_enabled" "off")"
+  wt_enabled="$(get_tmux_option "@catppuccin_window_tabs_enabled" "on")"
   readonly wt_enabled
 
   local right_separator
@@ -115,7 +115,7 @@ main() {
   readonly show_user="#[fg=$thm_blue,bg=$thm_bg]$right_separator#[fg=$thm_blue,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg] #(whoami) "
 
   local show_host
-  readonly show_host="#[fg=$thm_blue,bg=$thm_gray]$right_separator#[fg=$thm_blue,bg=$thm_bg]󰒋#[fg=$thm_fg,bg=$thm_black4] #H "
+  readonly show_host="#[fg=$thm_blue,bg=$thm_bg]$right_separator#[fg=$thm_blue,bg=$thm_bg]󰒋#[fg=$thm_fg,bg=$thm_bg] #H "
 
   local show_date_time
   readonly show_date_time="#[fg=$thm_blue,bg=$thm_gray]$right_separator#[fg=$thm_bg,bg=$thm_blue] #[fg=$thm_fg,bg=$thm_black4] $date_time "
@@ -134,8 +134,8 @@ main() {
   # update the right_column1 and the window_status_* variables.
   if [[ "${wt_enabled}" == "on" ]]; then
     right_column1=$show_directory
-    window_status_format=$show_window_in_window_status
-    window_status_current_format=$show_window_in_window_status_current
+    # window_status_format=$show_window_in_window_status
+    # window_status_current_format=$show_window_in_window_status_current
   fi
 
   if [[ "${user}" == "on" ]]; then
