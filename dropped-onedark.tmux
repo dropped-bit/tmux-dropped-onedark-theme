@@ -82,7 +82,7 @@ main() {
   readonly host
 
   local date_time
-  date_time="$(get_tmux_option "@catppuccin_date_time" "on")"
+  date_time="$(get_tmux_option "@catppuccin_date_time" "off")"
   readonly date_time
 
   # These variables are the defaults so that the setw and set calls are easier to parse.
