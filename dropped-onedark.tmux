@@ -62,7 +62,7 @@ main() {
 
   # NOTE: Checking for the value of @catppuccin_window_tabs_enabled
   local wt_enabled
-  wt_enabled="$(get_tmux_option "@catppuccin_window_tabs_enabled" "on")"
+  wt_enabled="$(get_tmux_option "@catppuccin_window_tabs_enabled" "off")"
   readonly wt_enabled
 
   local right_separator
@@ -87,7 +87,7 @@ main() {
 
   # These variables are the defaults so that the setw and set calls are easier to parse.
   local show_directory
-  readonly show_directory="#[fg=$thm_pink,bg=$thm_bg,nobold,nounderscore,noitalics]$right_separator#[fg=$thm_green,bg=$thmbg,nobold,nounderscore,noitalics] #[fg=$thm_fg,bg=$thm_bg] #{b:pane_current_path} #{?client_prefix,#[fg=$thm_red]"
+  readonly show_directory="#[fg=$thm_pink,bg=$thm_bg,nobold,nounderscore,noitalics]$right_separator#[fg=$thm_green,bg=$thmbg,nobold,nounderscore,noitalics]#[fg=$thm_fg,bg=$thm_bg] #{b:pane_current_path} #{?client_prefix,#[fg=$thm_red]"
 
   local show_window
   readonly show_window="#[fg=$thm_pink,bg=$thm_bg,nobold,nounderscore,noitalics]$right_separator#[fg=$thm_pink,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_pink,bg=$thm_bg] #W #{?client_prefix,#[fg=$thm_red]"
@@ -112,10 +112,10 @@ main() {
 
 
   local show_user
-  readonly show_user="#[fg=$thm_blue,bg=$thm_gray]$right_separator#[fg=$thm_bg,bg=$thm_blue] #[fg=$thm_fg,bg=$thm_black4] #(whoami) "
+  readonly show_user="#[fg=$thm_blue,bg=$thm_bg]$right_separator#[fg=$thm_blue,bg=$thm_bg]#[fg=$thm_fg,bg=$thm_bg] #(whoami) "
 
   local show_host
-  readonly show_host="#[fg=$thm_blue,bg=$thm_gray]$right_separator#[fg=$thm_bg,bg=$thm_blue]󰒋 #[fg=$thm_fg,bg=$thm_black4] #H "
+  readonly show_host="#[fg=$thm_blue,bg=$thm_gray]$right_separator#[fg=$thm_blue,bg=$thm_bg]󰒋#[fg=$thm_fg,bg=$thm_black4] #H "
 
   local show_date_time
   readonly show_date_time="#[fg=$thm_blue,bg=$thm_gray]$right_separator#[fg=$thm_bg,bg=$thm_blue] #[fg=$thm_fg,bg=$thm_black4] $date_time "
