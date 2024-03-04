@@ -28,14 +28,14 @@ setw() {
 
 main() {
   local theme
-  theme="$(get_tmux_option "@catppuccin_flavour" "mocha")"
+  # theme="$(get_tmux_option "@catppuccin_flavour" "mocha")"
 
   # Aggregate all commands in one array
   local tmux_commands=()
 
   # NOTE: Pulling in the selected theme by the theme that's being set as local
   # variables.
-  # shellcheck source=catppuccin-frappe.tmuxtheme
+  # shellcheck source=dropped-onedark.tmuxtheme
   source /dev/stdin <<<"$(sed -e "/^[^#].*=/s/^/local /" "${PLUGIN_DIR}/dropped-onedark.tmuxtheme")"
 
   # status
@@ -60,29 +60,29 @@ main() {
 
   # --------=== Statusline
 
-  # NOTE: Checking for the value of @catppuccin_window_tabs_enabled
+  # NOTE: Checking for the value of @window_tabs_enabled
   local wt_enabled
-  wt_enabled="$(get_tmux_option "@catppuccin_window_tabs_enabled" "on")"
+  wt_enabled="$(get_tmux_option "@window_tabs_enabled" "on")"
   readonly wt_enabled
 
   local right_separator
-  right_separator="$(get_tmux_option "@catppuccin_right_separator" "|")"
+  right_separator="$(get_tmux_option "@right_separator" "|")"
   readonly right_separator
 
   local left_separator
-  left_separator="$(get_tmux_option "@catppuccin_left_separator" "|")"
+  left_separator="$(get_tmux_option "@left_separator" "|")"
   readonly left_separator
 
   local user
-  user="$(get_tmux_option "@catppuccin_user" "on")"
+  user="$(get_tmux_option "@user" "on")"
   readonly user
 
   local host
-  host="$(get_tmux_option "@catppuccin_host" "on")"
+  host="$(get_tmux_option "@host" "on")"
   readonly host
 
   local date_time
-  date_time="$(get_tmux_option "@catppuccin_date_time" "off")"
+  date_time="$(get_tmux_option "@date_time" "off")"
   readonly date_time
 
   # These variables are the defaults so that the setw and set calls are easier to parse.
@@ -97,11 +97,11 @@ main() {
 
   local show_directory_in_window_status
   #readonly show_directory_in_window_status="#[fg=$thm_bg,bg=$thm_blue] #I #[fg=$thm_fg,bg=$thm_gray] #{b:pane_current_path} "
-  readonly show_directory_in_window_status="#[fg=$thm_bg,bg=$thm_blue] #I #[fg=$thm_fg,bg=$thm_bg] #(echo '#{pane_current_path}' | rev | cut -d'/' -f-2 | rev) "
+  readonly show_directory_in_window_status="#[fg=$thm_blue,bg=$thm_bg]#I$left_separator#[fg=$thm_blue,bg=$thm_bg]#(echo '#{pane_current_path}' | rev | cut -d'/' -f-2 | rev) "
 
   local show_directory_in_window_status_current
   #readonly show_directory_in_window_status_current="#[fg=$thm_bg,bg=$thm_orange] #I #[fg=$thm_fg,bg=$thm_bg] #{b:pane_current_path} "
-  readonly show_directory_in_window_status_current="#[fg=colour232,bg=$thm_orange] #I #[fg=$thm_fg,bg=$thm_bg] #(echo '#{pane_current_path}' | rev | cut -d'/' -f-2 | rev) "
+  readonly show_directory_in_window_status_current="#[fg=$thm_orange,bg=$thm_bg]#I$left_separator#[fg=$thm_orange,bg=$thm_bg]#(echo '#{pane_current_path}' | rev | cut -d'/' -f-2 | rev) "
 
   local show_window_in_window_status
   readonly show_window_in_window_status="#[fg=$thm_fg,bg=$thm_bg] #W #[fg=$thm_bg,bg=$thm_blue] #I#[fg=$thm_blue,bg=$thm_bg]$left_separator#[fg=$thm_fg,bg=$thm_bg,nobold,nounderscore,noitalics] "
@@ -130,7 +130,7 @@ main() {
   local window_status_format=$show_directory_in_window_status
   local window_status_current_format=$show_directory_in_window_status_current
 
-  # NOTE: With the @catppuccin_window_tabs_enabled set to on, we're going to
+  # NOTE: With the @window_tabs_enabled set to on, we're going to
   # update the right_column1 and the window_status_* variables.
   if [[ "${wt_enabled}" == "on" ]]; then
     right_column1=$show_window
